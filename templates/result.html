@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="card">
+	<h2 class="title">Recommended movie for you</h2>
+	<img src={{result.poster_path}}>
+	<h1>{{result.title}}</h1>
+	<p>Vote Average : {{result.vote_average}}</p>
+	<h4>Overview</h4>
+	<p>{{result.overview}}</p>
+</div>
+{% endblock %}

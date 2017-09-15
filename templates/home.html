@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<div class="container">
+	  <div class="jumbotron">
+	    <h1>DECIDE MOVIE</h1>
+	    <p>Got a lot of movies in your "Movies to watch" list but can't decide which of those to watch right now. Simple solution. Just enter the movies that you are confued between and then select genres from the list of genres and then finally get recommendation for the movie to watch</p>
+	  </div>
+	</div>
+
+  <div class="container">   
+    <form action="{{ request.path }}" method="post">
+      <div class="form-group">
+        <label for="title">Movie Name:</label>
+        <input name="movieName" type="text" class="form-control" id="movieName">
+      </div>
+      <button type="submit" class="btn btn-info">Submit</button>
+    </form> 
+  </div>
+
+	<div class="container>
+		<div class="row" class="big-card">
+		{% for movie in movies %}
+			<div class="card">
+				<img src={{movie.poster_path}}>
+				<h2>{{movie.title}}</h2>
+			</div>
+		{% endfor %}
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<a href="/decide" class="btn btn-primary btn-lg btn-block">Decide</a>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
+{% endblock %}

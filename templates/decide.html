@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<h1>Let's decide</h1>  
+    <form action="{{ request.path }}" method="post">
+	{% for movie in movies %}
+		{% set movieloop = loop %}
+		{% for genre in movie.genres %}
+			<input type="checkbox" name="box-{{ movieloop.index }}-{{ loop.index }}" value="box-{{ movieloop.index }}-{{ loop.index }}">
+			<input type="hidden" name="box-{{ movieloop.index }}-{{ loop.index }}" value="0">{{genre["name"]}}<br>
+		{% endfor %}
+	{% endfor %}
+		<button type="submit" class="btn btn-info">Result</button>
+    </form>
+{% endblock %}
